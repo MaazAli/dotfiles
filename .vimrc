@@ -1,20 +1,13 @@
 " display options {
-    syntax on               "syntax coloring is a first-cut debugging tool
     colorscheme murphy      "change to taste. try `desert' or `evening'
 
     set wrap                "wrap long lines
-    set scrolloff=3         "keep three lines visible above and below
-    set ruler showcmd       "give line, column, and command in the status line
-    set laststatus=2        "always show the status line
-                            "make filename-completion more terminal-like
-    set wildmode=longest:full
-    set wildmenu            "a menu for resolving ambiguous tab-completion
-                            "files we never want to edit
-    set wildignore=*.pyc,*.sw[pno],.*.bak,.*.tmp
+    set showcmd             "give command in the status line
+    set wildmode=longest:full "make filename-completion more terminal-like
+    set wildignore=*.pyc,*.sw[pno],.*.bak,.*.tmp  "files we never want to edit
 " }
 
 " searching {
-    set incsearch           "search as you type
     set hlsearch            "highlight the search
     set ignorecase          "ignore case
     set smartcase           " ...unless the search uses uppercase letters
@@ -36,8 +29,6 @@
     nnoremap k gk
     " Moving left/right will wrap around to the previous/next line.
     set whichwrap=b,s,h,l,<,>,~,[,]
-    " Backspace will delete whatever is behind your cursor.
-    set backspace=indent,eol,start
 
     "Bind the 'old' up and down. Use these to skip past a very long line.
     noremap gj j
@@ -117,7 +108,6 @@
     set hidden
     nmap <TAB> :bn<CR>
     nmap <S-TAB> :bp<CR>
-    set autoread            "auto-reload files, if there's no conflict
     set shortmess+=IA       "no intro message, no swap-file message
 
     "replacement for CTRL-I, also known as <tab>
@@ -136,8 +126,6 @@
     set softtabstop=4 shiftwidth=4      "4-space indents
 
     set shiftround                      "always use a multiple of 4 for indents
-    set smarttab                        "backspace to remove space-indents
-    set autoindent                      "auto-indent for code blocks
     "DONT USE: smartindent              "it does stupid things with comments
 
     "smart indenting by filetype, better than smartindent
