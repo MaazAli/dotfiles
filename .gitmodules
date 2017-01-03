@@ -1,0 +1,9 @@
+[submodule "/nail/home/maazali/.vim/bundle/ctrlp.vim"]
+	path = /nail/home/maazali/.vim/bundle/ctrlp.vim
+	url = /nail/home/maazali/.vim/bundle/cheetah.vim
+[submodule ".vim/bundle/cheetah.vim"]
+	path = .vim/bundle/cheetah.vim
+	url = /nail/home/maazali/.vim/bundle/cheetah.vim/
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = /nail/home/maazali/.vim/bundle/syntastic/
