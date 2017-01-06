@@ -1,5 +1,5 @@
-grep='grep --color'
-tmux=tmux2
+alias grep='grep --color'
+alias tmux=tmux2
 
 
 if [[ $TMUX ]]; then

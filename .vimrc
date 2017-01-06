@@ -151,6 +151,9 @@
 
         "show me the top of the "new" file
         autocmd VimEnter * normal lgg
+
+        "ignore whitespace changes
+        set diffopt+=iwhite
     endif
 " }
 
