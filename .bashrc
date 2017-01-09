@@ -3,5 +3,5 @@ alias tmux=tmux2
 
 
 if [[ $TMUX ]]; then
-    PROMPT_COMMAND='eval "$(/nail/scripts/tmux-env)"; '"$PROMPT_COMMAND"
+    PROMPT_COMMAND='eval "$(~/bin/tmux-env)"; '"$PROMPT_COMMAND"
 fi

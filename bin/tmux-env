@@ -1,0 +1,18 @@
+#!/bin/sh
+tmux2 showenv | sed '
+	/^-/ {
+		s/^-/unset /
+		bELSE
+	}
+	s/^/export /
+
+	:ELSE
+	s/ / '"'"'/
+	s/$/'"'"';/
+'
+
+# Comments at the end, so we can simplify the alias slightly (no double quotes necessary).
+cat <<EOF
+#If you're seeing this message, you need to put this alias in your .bashrc:
+#	alias tmux-env='eval \`/nail/scripts/tmux-env\`'
+EOF
