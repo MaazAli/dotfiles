@@ -1,10 +1,34 @@
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!mkdir -p ~/.vim/autoload'
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall
+endif
+
+" VIM PLUG
+call plug#begin('~/.vim/plugged')
+
+Plug 'wting/cheetah.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'arcticicestudio/nord-vim'
+Plug 'alessandroyorba/sidonia'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-sensible'
+
+call plug#end()
+
 " display options {
-    colorscheme murphy      "change to taste. try `desert' or `evening'
+    colorscheme nord     "change to taste. try `desert' or `evening'
 
     set wrap                "wrap long lines
     set showcmd             "give command in the status line
     set wildmode=longest:full "make filename-completion more terminal-like
     set wildignore=*.pyc,*.sw[pno],.*.bak,.*.tmp  "files we never want to edit
+    set colorcolumn=80,132
 " }
 
 " searching {
@@ -15,6 +39,14 @@
     "Use case-sensitive search for the * command though.
     :nnoremap * /\<<C-R>=expand('<cword>')<CR>\>\C<CR>
     :nnoremap # ?\<<C-R>=expand('<cword>')<CR>\>\C<CR>
+" }
+
+" Put all .swo files into one dir {
+    set undofile
+    set undodir=~/.vim/undo
+
+    set backupdir=~/.vim/backup
+    set directory=~/.vim/backup
 " }
 
 " movement options {
@@ -48,6 +80,10 @@
     vnoremap p pgvy
 " }
 
+" Show spaces and tabs
+  set list
+  set listchars=tab:»·,trail:·
+
 " windows-style mappings {
     "ctrl+S to save.
     "NOTE: put this in ~/.bashrc for it to work properly in terminal vim:
@@ -69,14 +105,6 @@
     "ctrl+Q to save/quit
     map <c-q> :update\|q<cr>
     imap <c-q> <c-o><c-q>
-    "ctrl+V to paste
-    map <c-v> "+gP
-    imap <c-v> <c-o>"+gP
-    vmap <c-v> "+P
-
-    "replace <CTRL-V> with <CTRL-B>
-    noremap <c-b> <c-v>
-    inoremap <c-b> <c-v>
 " }
 
 " common typos {
@@ -154,18 +182,33 @@
 
         "ignore whitespace changes
         set diffopt+=iwhite
+
+        " line numbers when diffing
+        windo set nu
     endif
 " }
 
-" Pathogen: {
-    " keep plugins nicely bundled in separate folders.
-    " http://www.vim.org/scripts/script.php?script_id=2332
-    runtime autoload/pathogen.vim
-    if exists('g:loaded_pathogen')
-        call pathogen#infect()    "load the bundles, if possible
-        Helptags                  "plus any bundled help
-        runtime bundle_config.vim "give me a chance to configure the plugins
-    endif
+
+" fix the vimdiff colors
+:hi DiffAdd term=bold ctermfg=0 ctermbg=4
+:hi DiffChange term=bold ctermfg=0 ctermbg=5
+:hi DiffDelete term=bold ctermfg=1 ctermbg=6
+:hi DiffText term=reverse cterm=bold ctermbg=9
+
+" Resize windows automatically
+autocmd VimResized * wincmd =
+
+
+" { from http://www.bestofvim.com/tip/diff-diff/
+    nnoremap <Leader>df :call DiffToggle()<CR>
+
+    function! DiffToggle()
+        if &diff
+            diffoff
+        else
+            diffthis
+        endif
+    :endfunction
 " }
 
 " vim:et:sts=4:sw=4

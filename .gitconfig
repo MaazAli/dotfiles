@@ -16,7 +16,7 @@
 [difftool "vimdiff"]
     # This is the same as the default command git would use,
     # except missing a -R (readonly) option.
-    cmd = vim -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\"
+    cmd = vim -f -d -c \"wincmd l\" \"$LOCAL\" \"$REMOTE\"
 [alias]
     dt = difftool
     mt = mergetool
