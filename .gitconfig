@@ -20,3 +20,6 @@
 [alias]
     dt = difftool
     mt = mergetool
+[user]
+	email = maaz_ali@outlook.com
+	name = Maaz Ali

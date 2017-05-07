@@ -23,13 +23,14 @@ call plug#end()
 
 " display options {
     colorscheme nord     "change to taste. try `desert' or `evening'
-
     set wrap                "wrap long lines
     set showcmd             "give command in the status line
     set wildmode=longest:full "make filename-completion more terminal-like
     set wildignore=*.pyc,*.sw[pno],.*.bak,.*.tmp  "files we never want to edit
     set colorcolumn=80,132
 " }
+
+set nocompatible
 
 " searching {
     set hlsearch            "highlight the search
